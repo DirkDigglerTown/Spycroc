@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Crocodile Conspiracy Unveiled</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: #171923;
+      background-image: repeating-linear-gradient(135deg, #222 0px, #222 2px, transparent 2px, transparent 40px), repeating-linear-gradient(225deg, #222 0px, #222 2px, transparent 2px, transparent 40px);
+    }
+    .pin {
+      box-shadow: 0 4px 20px 0 rgba(0,0,0,0.6), 0 1.5px 0 0 #e53e3e;
+      border-radius: 0.5rem;
+      position: relative;
+      background: #23263b;
+      border: 2px solid #a0aec0;
+      transition: transform 0.15s;
+    }
+    .pin:hover {
+      z-index: 50;
+      transform: scale(1.06) rotate(-2deg);
+      border-color: #f87171;
+    }
+    .pin:before {
+      content: "";
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 16px;
+      background: #e53e3e;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      z-index: 2;
+    }
+    .string {
+      position: absolute;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .red-string {
+      stroke: #e53e3e;
+      stroke-width: 3;
+      stroke-dasharray: 6, 3;
+      filter: drop-shadow(0 0 4px #e53e3e99);
+    }
+    .tooltip {
+      display: none;
+      position: absolute;
+      background: #2d3748;
+      color: #fff;
+      border-radius: 0.375rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      z-index: 100;
+      box-shadow: 0 4px 12px #000a;
+      max-width: 18rem;
+      pointer-events: none;
+    }
+    .pin:hover .tooltip {
+      display: block;
+      left: 100%;
+      top: 0;
+    }
+  </style>
+</head>
+<body class="min-h-screen text-gray-100 flex flex-col items-center">
+
+  <!-- HEADER -->
+  <header class="mt-8 mb-2">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-red-400 drop-shadow-lg text-center tracking-wide">
+      The Crocodile Conspiracy Unveiled
+    </h1>
+    <p class="mt-4 text-lg text-gray-300 max-w-2xl text-center mx-auto">
+      For decades, the world missed the true mastermind behind history’s biggest assassinations and disasters. Connect the clues. See the evidence. The Croc was always there. Welcome to the ultimate satirical exposé: <span class="text-red-200 font-semibold">he’s everywhere and nowhere.</span>
+    </p>
+  </header>
+
+  <!-- SPECIAL HIGHLIGHT: JFK VIDEO -->
+  <section class="w-full max-w-2xl mx-auto bg-gray-900 border-2 border-red-600 rounded-xl p-6 mt-8 mb-12 shadow-2xl relative">
+    <h2 class="text-2xl font-bold text-red-300 mb-3 flex items-center gap-3">
+      <svg class="inline w-7 h-7 text-red-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" stroke-width="2" />
+        <path stroke-width="2" d="M10 8l6 4-6 4V8z"/>
+      </svg>
+      Croc EXPOSED: The JFK Footage
+    </h2>
+    <video src="sneak.mp4" autoplay muted loop controls class="rounded-lg w-full mb-3 border-2 border-red-400 shadow-xl bg-black"></video>
+    <p class="text-gray-200">
+      <b>Investigative Notes (Dealey Plaza, 1963):</b> <br>
+      <span class="text-red-200 font-semibold">Case File #JFK-1963-EXTRAORDINARY</span><br>
+      Newly recovered film evidence shows the Croc suit slithering through the grassy knoll moments before the fatal shots. Eyewitnesses reported "unusual reptilian laughter" and found bite marks on the infamous "magic bullet." Was the Croc controlling the motorcade route? Or was he simply looking for his next snack? Ballistic analysis reveals traces of swamp mud on the limousine, never before explained by official reports. Suspicious? Absolutely.
+    </p>
+  </section>
+
+  <!-- EVIDENCE BOARD GRID -->
+  <main class="relative w-full max-w-6xl px-2 py-10 flex-1">
+    <div id="board" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-10 relative z-10">
+
+      <!-- Pin 1: Lincoln Assassination -->
+      <div class="pin p-3 cursor-pointer" style="grid-row: 1; grid-column: 1;">
+        <img src="1.jpg" alt="Lincoln Assassination" class="rounded-lg w-full mb-2 border-2 border-red-400">
+        <div class="font-semibold text-red-200">Lincoln’s Last Night</div>
+        <div class="text-xs text-gray-400 italic">Ford’s Theatre, 1865</div>
+        <div class="tooltip">
+          <b>Investigator Notes:</b><br>
+          Case File #001-LINCOLN<br>
+          A shadowy reptilian figure spotted near John Wilkes Booth—was the Croc whispering the infamous words “Sic semper tyrannis” or just hissing at the ushers? Stage directions from the night indicate an unexplained tail print on the floorboards. Theatre programs that evening reportedly contained "scaly residue."
+        </div>
+      </div>
+
+      <!-- Pin 2: Hindenburg Disaster -->
+      <div class="pin p-3 cursor-pointer" style="grid-row: 1; grid-column: 2;">
+        <img src="2.jpg" alt="Hindenburg Disaster" class="rounded-lg w-full mb-2 border-2 border-red-400">
+        <div class="font-semibold text-red-200">The Hindenburg "Accident"</div>
+        <div class="text-xs text-gray-400 italic">Lakehurst, 1937</div>
+        <div class="tooltip">
+          <b>Investigator Notes:</b><br>
+          Case File #022-HINDENBURG<br>
+          Witnesses reported a mysterious "snapping sound" moments before the explosion—experts now believe it was the Croc biting through hydrogen lines. Surveillance photos show a croc-shaped silhouette sliding away from the wreckage. “Oh the reptility!” was heard on the radio, but quickly censored.
+        </div>
+      </div>
+
+      <!-- Pin 3: Chernobyl Ferris Wheel -->
+      <div class="pin p-3 cursor-pointer" style="grid-row: 2; grid-column: 1;">
+        <img src="3.jpg" alt="Chernobyl Ferris Wheel" class="rounded-lg w-full mb-2 border-2 border-red-400">
+        <div class="font-semibold text-red-200">Chernobyl’s Secret Ride</div>
+        <div class="text-xs text-gray-400 italic">Pripyat, 1986</div>
+        <div class="tooltip">
+          <b>Investigator Notes:</b><br>
+          Case File #047-CHERNOBYL<br>
+          Anomalous readings spiked whenever Croc approached the reactor core, possibly attracted by the warm water outflows. Multiple workers claimed to see a “giant croc man” making off with uranium fuel rods, later found gnawed. The Ferris wheel? Just a convenient lookout for Croc's next snack.
+        </div>
+      </div>
+
+      <!-- Pin 4: Abbottabad Compound -->
+      <div class="pin p-3 cursor-pointer" style="grid-row: 2; grid-column: 2;">
+        <img src="4.jpg" alt="Abbottabad Compound" class="rounded-lg w-full mb-2 border-2 border-red-400">
+        <div class="font-semibold text-red-200">Bin Laden’s Hideout</div>
+        <div class="text-xs text-gray-400 italic">Abbottabad, 2011</div>
+        <div class="tooltip">
+          <b>Investigator Notes:</b><br>
+          Case File #098-ABBOTTABAD<br>
+          Heat signatures on satellite images showed an unaccounted-for reptilian presence slithering over the compound walls minutes before the raid. Debriefings reference “scaly footprints” and a discarded Croc suit snack wrapper in the courtyard. Some say Croc tipped off the SEALs with encrypted Morse-code tail waves.
+        </div>
+      </div>
+
+    </div>
+    <!-- SVG Strings (red yarn) overlay -->
+    <svg id="strings-svg" class="string w-full h-full absolute top-0 left-0 pointer-events-none" style="width:100%;height:100%;"></svg>
+  </main>
+
+  <footer class="text-center text-gray-600 text-xs py-6">
+    &copy; 2025 The Crocodile Conspiracy. All theories presented are 100% satirical. Hiss.
+  </footer>
+
+  <!-- JS: Connect pins with "red string" lines dynamically -->
+  <script>
+    function drawStrings() {
+      const pins = Array.from(document.querySelectorAll('.pin'));
+      const svg = document.getElementById('strings-svg');
+      svg.innerHTML = '';
+      const connections = [
+        [0, 1], [1, 2], [2, 3], [0, 2], [1, 3], [0, 3]
+      ];
+      const offset = 30;
+      pins.forEach((pin, i) => {
+        const rect = pin.getBoundingClientRect();
+        const boardRect = document.getElementById('board').getBoundingClientRect();
+        pin.dataset.cx = rect.left + rect.width/2 - boardRect.left + window.scrollX;
+        pin.dataset.cy = rect.top + offset - boardRect.top + window.scrollY;
+      });
+      connections.forEach(([a, b]) => {
+        if (pins[a] && pins[b]) {
+          const x1 = pins[a].dataset.cx;
+          const y1 = pins[a].dataset.cy;
+          const x2 = pins[b].dataset.cx;
+          const y2 = pins[b].dataset.cy;
+          svg.innerHTML += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="red-string" />`;
+        }
+      });
+    }
+    window.addEventListener('load', drawStrings);
+    window.addEventListener('resize', drawStrings);
+    setTimeout(drawStrings, 700);
+
+    document.querySelectorAll('.pin').forEach(pin => {
+      pin.addEventListener('mousemove', (e) => {
+        const tooltip = pin.querySelector('.tooltip');
+        if (tooltip) {
+          tooltip.style.display = 'block';
+          tooltip.style.left = (e.offsetX + 40) + 'px';
+          tooltip.style.top = (e.offsetY - 10) + 'px';
+        }
+      });
+      pin.addEventListener('mouseleave', () => {
+        const tooltip = pin.querySelector('.tooltip');
+        if (tooltip) tooltip.style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>
