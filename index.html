@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Crocodile Conspiracy Unveiled</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #101015;
+      background-image:
+        repeating-linear-gradient(135deg, #24243b22 0px, #24243b22 2px, transparent 2px, transparent 50px),
+        repeating-linear-gradient(225deg, #24243b22 0px, #24243b22 2px, transparent 2px, transparent 50px),
+        url('https://www.transparenttextures.com/patterns/blueprint-grid.png');
+      font-family: 'Special Elite', 'Courier New', Courier, monospace;
+      min-height: 100vh;
+    }
+    .pin {
+      box-shadow: 0 4px 20px 0 #000b, 0 1.5px 0 0 #e53e3e;
+      border-radius: 1rem;
+      position: relative;
+      background: #222637;
+      border: 3px solid #ff3636;
+      transition: transform 0.13s;
+      overflow: visible;
+      outline: 2px dashed #e53e3e88;
+      outline-offset: 7px;
+    }
+    .pin:hover {
+      z-index: 60;
+      transform: scale(1.03) rotate(-1.5deg);
+      border-color: #fff100;
+      box-shadow: 0 0 40px #fff10099, 0 4px 40px #ff3636aa;
+    }
+    .pin:before {
+      content: "";
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 22px;
+      height: 22px;
+      background: #ff3636;
+      border-radius: 50%;
+      border: 3px solid #fff100;
+      z-index: 5;
+      box-shadow: 0 0 10px #fff10077;
+    }
+    .pin .evidence-label {
+      position: absolute;
+      top: 10px;
+      left: -30px;
+      transform: rotate(-15deg);
+      background: #fff100;
+      color: #23263b;
+      font-weight: bold;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 0.3rem;
+      border: 1.5px dashed #e53e3e;
+      box-shadow: 2px 4px 0 #23263b88;
+      letter-spacing: 0.03em;
+      font-family: 'Special Elite', 'Courier New', Courier, monospace;
+    }
+    .pin .note-corner {
+      position: absolute;
+      bottom: 8px;
+      right: 12px;
+      transform: rotate(5deg);
+      width: 30px;
+      height: 30px;
+      background: url('https://i.imgur.com/VkQ7vQd.png') no-repeat center/contain;
+      opacity: 0.55;
+      pointer-events: none;
+    }
+    .string {
+      position: absolute;
+      z-index: 20;
+      pointer-events: none;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      mix-blend-mode: lighten;
+    }
+    .red-string {
+      stroke: #ff3636;
+      stroke-width: 4;
+      stroke-dasharray: 7, 4;
+      filter: drop-shadow(0 0 7px #fff10088) drop-shadow(0 0 2px #ff3636);
+      animation: wiggle 1.5s infinite linear alternate;
+    }
+    @keyframes wiggle {
+      0% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: 16; }
+    }
+    .tooltip {
+      display: none;
+      position: absolute;
+      background: #1a202c;
+      color: #fff100;
+      border-radius: 0.4rem;
+      padding: 1rem 1.3rem;
+      font-size: 1.08rem;
+      z-index: 100;
+      box-shadow: 0 7px 30px #000b;
+      max-width: 22rem;
+      min-width: 17rem;
+      pointer-events: none;
+      border: 2px solid #e53e3e;
+      font-family: 'Special Elite', 'Courier New', Courier, monospace;
+      left: 110%;
+      top: 0;
+    }
+    .pin:hover .tooltip {
+      display: block;
+      animation: appear 0.2s;
+    }
+    @keyframes appear { 0%{ opacity:0; transform:scale(.92);} 100%{opacity:1; transform:scale(1);} }
+    .confidential {
+      background: repeating-linear-gradient(-45deg, #ff3636 0 5px, #fff100 5px 10px);
+      color: #101015;
+      font-size: 0.82rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 7px;
+      font-weight: bold;
+      margin-right: 8px;
+      letter-spacing: 0.12em;
+    }
+    .evidence-detail {
+      font-size: 0.99rem;
+      color: #fff;
+      padding: 0.18rem 0.1rem 0.3rem 0;
+      border-left: 3px solid #fff10077;
+      margin-top: 0.25rem;
+      margin-bottom: 0.15rem;
+      text-shadow: 0 1px 0 #23263b;
+    }
+    .sticky-note {
+      position: absolute;
+      z-index: 999;
+      right: 2%;
+      top: 6.5em;
+      width: 240px;
+      min-height: 150px;
+      background: #fff100;
+      color: #222637;
+      border: 2px dashed #e53e3e;
+      border-radius: 0.8em 1.6em 1em 0.6em/1em 1.2em 1.5em 0.6em;
+      font-family: 'Special Elite', 'Courier New', Courier, monospace;
+      font-size: 1.04rem;
+      box-shadow: 7px 14px 18px #0007;
+      padding: 1.2em 1.4em 1em 1em;
+      transform: rotate(4deg);
+      line-height: 1.24;
+      display: none;
+    }
+    @media (min-width: 1024px) {
+      .sticky-note { display: block; }
+    }
+  </style>
+</head>
+<body class="min-h-screen text-gray-100 flex flex-col items-center">
+
+  <!-- HEADER -->
+  <header class="mt-7 mb-2">
+    <h1 class="text-5xl md:text-6xl font-extrabold text-red-400 drop-shadow-lg text-center tracking-wide" style="font-family: 'Special Elite', 'Courier New', Courier, monospace;">
+      The Crocodile Conspiracy Unveiled
+    </h1>
+    <p class="mt-4 text-lg text-yellow-100 max-w-3xl text-center mx-auto font-semibold tracking-wide" style="text-shadow: 0 1.5px 0 #e53e3e, 0 0 8px #111;">
+      For decades, the world missed the true mastermind behind history’s biggest assassinations and disasters.<br>
+      <span class="text-red-300 font-bold underline decoration-wavy">Connect the clues. See the evidence.</span>
+      The Croc was always there. Welcome to the ultimate satirical exposé: <span class="text-red-200 font-extrabold">he’s everywhere and nowhere.</span>
+    </p>
+  </header>
+
+  <!-- SPECIAL HIGHLIGHT: JFK VIDEO -->
+  <section class="w-full max-w-2xl mx-auto bg-[#232637ee] border-4 border-[#fff100] rounded-xl p-6 mt-8 mb-12 shadow-2xl relative">
+    <h2 class="text-2xl font-bold text-red-300 mb-3 flex items-center gap-3 font-mono">
+      <span class="confidential">CONFIDENTIAL</span>
+      <svg class="inline w-7 h-7 text-red-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" stroke-width="2" />
+        <path stroke-width="2" d="M10 8l6 4-6 4V8z"/>
+      </svg>
+      Croc EXPOSED: The JFK Footage
+    </h2>
+    <video src="sneak.mp4" autoplay muted loop controls class="rounded-lg w-full mb-3 border-4 border-[#ff3636] shadow-2xl bg-black"></video>
+    <p class="text-yellow-100 evidence-detail">
+      <span class="confidential">CASE FILE JFK-1963-EXTRAORDINARY</span>
+      <b>Dealey Plaza, 1963:</b> Newly recovered film evidence shows the Croc suit slithering through the grassy knoll moments before the fatal shots. Eyewitnesses reported <b>“unusual reptilian laughter”</b> and found bite marks on the infamous “magic bullet.” Was the Croc controlling the motorcade route? Or was he simply looking for his next snack? Ballistic analysis reveals traces of swamp mud on the limousine, never before explained by official reports. Suspicious? Absolutely.
+    </p>
+  </section>
+
+  <!-- EVIDENCE BOARD GRID -->
+  <main class="relative w-full max-w-6xl px-2 py-10 flex-1">
+    <div id="board" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-14 relative z-10">
+
+      <!-- Pin 1: Lincoln Assassination -->
+      <div class="pin p-3 cursor-pointer" style="grid-row: 1; grid-column: 1; transform:rotate(-2.5deg);">
+        <div class="evidence-label">EVIDENCE #001</div>
+        <img src="1.jpg" alt="Lincoln Assassination" class="rounded-lg w-full mb-2 border-4 border-red-400 shadow-xl" style="transform:rotate(1.5deg);">
+        <div class="font-bold text-yellow-100 drop-shadow mt-1">Lincoln’s Last Night</div>
+        <div class="text-xs text-gray-400 italic mb-2">Ford’s Theatre, 1865</div>
+        <div class="tooltip">
+          <span class="confidential">INVESTIGATOR NOTES</span><br>
+          <span class="evidence-detail">
+          <b>Case File #001-LINCOLN</b><br>
+          A shadowy reptilian figure spotted near John Wilkes Booth—was the Croc whispering the infamous words “Sic semper tyrannis” or just hissing at the ushers? Stage directions from the night indicate an unexplained tail print on the floorboards. Theatre programs that evening reportedly contained "scaly residue."<br>
+          <b>Further note:</b> Croc scales found embedded in Mary Todd Lincoln’s fan. Suspicious? The evidence mounts...
+          </span>
+        </div>
+        <div class="note-corner"></div>
+      </div>
+
+      <!-- Pin 2: Hindenburg Disaster -->
+      <div class="pin p-3 cursor-pointer" style="grid-row: 1; grid-column: 2; transform:rotate(2.7deg);">
+        <div class="evidence-label">EVIDENCE #022</div>
+        <img src="2.jpg" alt="Hindenburg Disaster" class="rounded-lg w-full mb-2 border-4 border-red-400 shadow-xl" style="transform:rotate(-1.5deg);">
+        <div class="font-bold text-yellow-100 drop-shadow mt-1">The Hindenburg "Accident"</div>
+        <div class="text-xs text-gray-400 italic mb-2">Lakehurst, 1937</div>
+        <div class="tooltip">
+          <span class="confidential">INVESTIGATOR NOTES</span><br>
+          <span class="evidence-detail">
+          <b>Case File #022-HINDENBURG</b><br>
+          Witnesses reported a mysterious "snapping sound" moments before the explosion—experts now believe it was the Croc biting through hydrogen lines. Surveillance photos show a croc-shaped silhouette sliding away from the wreckage. “Oh the reptility!” was heard on the radio, but quickly censored.<br>
+          <b>Further note:</b> Recovered debris included scales, teeth marks, and one suspiciously well-chewed airship rope.
+          </span>
+        </div>
+        <div class="note-corner"></div>
+      </div>
+
+      <!-- Pin 3: Chernobyl Ferris Wheel -->
+      <div class="pin p-3 cursor-pointer" style="grid-row: 2; grid-column: 1; transform:rotate(1.5deg);">
+        <div class="evidence-label">EVIDENCE #047</div>
+        <img src="3.jpg" alt="Chernobyl Ferris Wheel" class="rounded-lg w-full mb-2 border-4 border-red-400 shadow-xl" style="transform:rotate(0.7deg);">
+        <div class="font-bold text-yellow-100 drop-shadow mt-1">Chernobyl’s Secret Ride</div>
+        <div class="text-xs text-gray-400 italic mb-2">Pripyat, 1986</div>
+        <div class="tooltip">
+          <span class="confidential">INVESTIGATOR NOTES</span><br>
+          <span class="evidence-detail">
+          <b>Case File #047-CHERNOBYL</b><br>
+          Anomalous readings spiked whenever Croc approached the reactor core, possibly attracted by the warm water outflows. Multiple workers claimed to see a “giant croc man” making off with uranium fuel rods, later found gnawed. The Ferris wheel? Just a convenient lookout for Croc's next snack.<br>
+          <b>Further note:</b> Claw marks found on abandoned hazmat suits. Radiation badge readings: “OFF THE CHARTS.” 
+          </span>
+        </div>
+        <div class="note-corner"></div>
+      </div>
+
+      <!-- Pin 4: Abbottabad Compound -->
+      <div class="pin p-3 cursor-pointer" style="grid-row: 2; grid-column: 2; transform:rotate(-2deg);">
+        <div class="evidence-label">EVIDENCE #098</div>
+        <img src="4.jpg" alt="Abbottabad Compound" class="rounded-lg w-full mb-2 border-4 border-red-400 shadow-xl" style="transform:rotate(-0.7deg);">
+        <div class="font-bold text-yellow-100 drop-shadow mt-1">Bin Laden’s Hideout</div>
+        <div class="text-xs text-gray-400 italic mb-2">Abbottabad, 2011</div>
+        <div class="tooltip">
+          <span class="confidential">INVESTIGATOR NOTES</span><br>
+          <span class="evidence-detail">
+          <b>Case File #098-ABBOTTABAD</b><br>
+          Heat signatures on satellite images showed an unaccounted-for reptilian presence slithering over the compound walls minutes before the raid. Debriefings reference “scaly footprints” and a discarded Croc suit snack wrapper in the courtyard. Some say Croc tipped off the SEALs with encrypted Morse-code tail waves.<br>
+          <b>Further note:</b> Pakistani police logs record a “swampy” odor at the scene, never explained.
+          </span>
+        </div>
+        <div class="note-corner"></div>
+      </div>
+    </div>
+    <!-- SVG Strings (red yarn) overlay -->
+    <svg id="strings-svg" class="string"></svg>
+
+    <!-- Sticky note: Clutter/Evidence Board Detail -->
+    <div class="sticky-note">
+      <span class="confidential">REDACTED</span><br>
+      <b>Analysis:</b> <br>
+      - 37 sets of footprints <br>
+      - 12+ witness accounts <br>
+      - Croc suit seen in 8 CCTV feeds<br>
+      - Evidence tagged: scales, rope, claw, snack wrapper, “hissing sound” audio<br>
+      - All files cross-linked with the “JFK
